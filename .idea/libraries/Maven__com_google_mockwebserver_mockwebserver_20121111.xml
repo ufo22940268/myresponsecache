@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.google.mockwebserver:mockwebserver:20121111">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/mockwebserver/mockwebserver/20121111/mockwebserver-20121111.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/mockwebserver/mockwebserver/20121111/mockwebserver-20121111-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/mockwebserver/mockwebserver/20121111/mockwebserver-20121111-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
