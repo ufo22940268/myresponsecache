@@ -480,12 +480,12 @@ public final class ResponseHeaders {
         RawHeaders result = new RawHeaders();
         result.setStatusLine(headers.getStatusLine());
 
-        System.out.println("ResponseHeaders.combine");
+//        System.out.println("ResponseHeaders.combine");
 
         String ce = headers.get("Content-Encoding");
-        System.out.println("ce = " + ce);
+//        System.out.println("ce = " + ce);
         String ne = network.getHeaders().get("Content-Encoding");
-        System.out.println("ne = " + ne);
+//        System.out.println("ne = " + ne);
 
         for (int i = 0; i < headers.length(); i++) {
             String fieldName = headers.getFieldName(i);
@@ -512,9 +512,6 @@ public final class ResponseHeaders {
             result.add("Content-Encoding", ce);
         }
         String s = result.get("Content-Encoding");
-        System.out.println("s = " + s);
-        System.out.println();
-        System.out.println();
         return new ResponseHeaders(uri, result);
     }
 

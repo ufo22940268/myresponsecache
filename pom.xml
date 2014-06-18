@@ -9,10 +9,10 @@
 		<version>7</version>
 	</parent>
 
-	<groupId>com.integralblue</groupId>
+	<groupId>me.biubiubiu</groupId>
 	<artifactId>httpresponsecache</artifactId>
 	<packaging>jar</packaging>
-	<version>1.4-SNAPSHOT</version>
+	<version>1.4</version>
 
 	<name>HTTP Response Cache</name>
 	<description>An HTTP Response Cache for java.net.URL</description>

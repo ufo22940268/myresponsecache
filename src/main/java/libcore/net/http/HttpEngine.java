@@ -525,7 +525,7 @@ public class HttpEngine {
 
     private void initContentStream(InputStream transferStream) throws IOException {
         String s = responseHeaders.getHeaders().get("Content-Encoding");
-        System.out.println("initContentStream s = " + s);
+//        System.out.println("initContentStream s = " + s);
         if (transparentGzip && responseHeaders.isContentEncodingGzip()) {
             /*
              * If the response was transparently gzipped, remove the gzip header field
