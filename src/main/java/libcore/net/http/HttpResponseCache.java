@@ -84,6 +84,24 @@ public final class HttpResponseCache extends ResponseCache implements ExtendedRe
     }
 
     private String uriToKey(URI uri) {
+        try {
+            if (uri != null && uri.getHost().contains("chapter2")) {
+                String query = uri.getQuery();
+                if (query != null && query.contains("&")) {
+                    String[] split = query.split("&");
+                    if (split.length == 2) {
+                        String s = split[0];
+                        if (isValidParams(s.split("=")[0]) && isValidParams(s.split("=")[0])) {
+                            String fullUrl = uri.toString();
+                            URI newUri = URI.create(fullUrl.replace("?" + uri.getQuery(), ""));
+                            uri = newUri;
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         // try {
         // MessageDigest.getInstance(String) isn't thread safe, but it should be.
         // On Android, if that static method is invoked by multiple threads simultaneously,
@@ -92,11 +110,15 @@ public final class HttpResponseCache extends ResponseCache implements ExtendedRe
         // see https://code.google.com/p/android/issues/detail?id=37937
         // So use our own MD5 implementation instead.
         MessageDigest messageDigest = new MD5();
-        byte[] md5bytes = messageDigest.digest(Strings.getBytes(uri.toString(),Charsets.UTF_8));
+        byte[] md5bytes = messageDigest.digest(Strings.getBytes(uri.toString(), Charsets.UTF_8));
         return Strings.bytesToHexString(md5bytes, false);
         // } catch (NoSuchAlgorithmException e) {
         //    throw new AssertionError(e);
         //}
+    }
+
+    private boolean isValidParams(String s) {
+        return s.equals("k") || s.equals("t");
     }
 
     @Override public CacheResponse get(URI uri, String requestMethod,
