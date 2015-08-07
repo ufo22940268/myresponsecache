@@ -586,10 +586,22 @@ public final class HttpResponseCache extends ResponseCache implements ExtendedRe
 
         public boolean matches(URI uri, String requestMethod,
                 Map<String, List<String>> requestHeaders) {
-            return this.uri.equals(uri.toString())
+
+            String uriStr = removeChapterParams(uri.toString());
+            String paramUriStr = removeChapterParams(this.uri);
+
+            return uriStr.equals(paramUriStr)
                     && this.requestMethod.equals(requestMethod)
                     && new ResponseHeaders(uri, responseHeaders)
-                            .varyMatches(varyHeaders.toMultimap(), requestHeaders);
+                    .varyMatches(varyHeaders.toMultimap(), requestHeaders);
+        }
+
+        private String removeChapterParams(String s) {
+            if (s != null && s.contains("chapter2") && s.contains("t=")) {
+                s = s.replaceAll("(.+)(\\?.*t\\=.*)", "$1");
+            }
+
+            return s;
         }
     }
 
